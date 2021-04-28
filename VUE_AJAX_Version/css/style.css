@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Lato', sans-serif; 
+}
+
+html {
+    min-width: 540px;
+    background-color: rgb(19, 19, 19);
+}
+
+body {
+    height: 100vh;
+    font-family: 'Lato', sans-serif; 
+}
+
+header {
+    width: 100%;
+    height: 70px;
+    padding: 0 30px;
+    background-color: black;
+}
+
+header img {
+    height: 50px;
+    margin-top: 10px;
+}
+
+.artist_filter {
+    float: right;
+    margin-top: 15px;
+}
+
+.artist_filter select {
+    padding: 10px 0;
+    padding-right: 5px;
+    color: lightgrey;
+    border-radius: 3px;
+    background-color: rgb(44, 43, 43);
+}
+
+.main_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.disc_item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-basis: 350px;
+    padding: 20px;
+    margin: 10px;
+    height: 480px;
+    text-align: center;
+    border-radius: 3px;
+    background: rgb(44, 43, 43);
+}
+
+.disc_item .cover {
+    width: 100%;
+    border-radius: 3px;
+}
+
+.disc_item .title {
+    margin: 20px 0;
+    text-transform: uppercase;
+    color: white;
+}
+
+.disc_item .author, .disc_item .year, .disc_item .genre {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: grey;
+}
+
+.disc_item .author {
+    font-size: 18px;
+}
+
+.disc_item .year {
+    font-size: 12px;
+}
+
+.disc_item .genre {
+    margin-top: 10px;
+}
+
