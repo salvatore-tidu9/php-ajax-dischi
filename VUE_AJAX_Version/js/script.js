@@ -21,13 +21,22 @@ var app = new Vue({
 
             this.database= result.data;
 
-            this.database.forEach(element => {
-
-                if (!this.authors.includes(element.author)) {
-
-                    this.authors.push(element.author)
-                }
-            });
+            this.filterAuthors();
         });
+    },
+
+    methods: {
+
+        filterAuthors() {
+
+            axios
+
+            .get("server.php?listAuthors=true")
+
+            .then((result) => {
+
+                this.authors = result.data;
+            });
+        }
     }
 });
