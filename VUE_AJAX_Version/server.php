@@ -3,31 +3,60 @@
     require "database.php";
 
     header("Content-Type: application.json");
+
+
+    $call = $_GET["call"];
+
     
+    switch ($call) {
 
-    if (!empty($_GET["listAuthors"]))  {
+        case "allAlbums":
 
-        $listAuthors = $_GET["listAuthors"];
+            echo json_encode($database);
 
-        $authors = [];
+            break;
 
-        if ($listAuthors == true) {
 
-            foreach($database as $element) {
+        case "allAuthors":
 
-                if (!in_array($element["author"], $authors)) {
+            $authors = [];
 
-                    $authors[] = $element["author"];
-                }
+            foreach ($database as $element) {
+
+                $authors[] = $element["author"];
             }
-        }
 
-        echo json_encode($authors);
-    }
+            echo json_encode($authors);
 
-    else {
+            break;
 
-        echo json_encode($database);
+
+        case "filteredAuthors":
+
+            $filteredDatabase = [];
+
+            $author = $_GET["author"];
+
+            if ($author == "") {
+
+                $filteredDatabase = $database;
+            }
+
+            else {
+
+                foreach ($database as $element) {
+
+                    if ($author != "" && $element["author"] == $author) {
+    
+                        $filteredDatabase[] = $element;
+                    }
+                }
+            };
+
+            echo json_encode($filteredDatabase);
+
+            break;
+
     }
 
 ?>

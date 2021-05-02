@@ -25,11 +25,11 @@
 
             <div class="artist_filter">
 
-                <select v-model= "selectedArtist">
+                <select v-model= "selectedAuthor" @change="getFilteredAuthors()">
 
                     <option value="">All artists</option>
 
-                    <option v-for="author in authors">{{author}}</option>
+                    <option v-for="author in authors" :value="author">{{author}}</option>
 
                 </select>
 
@@ -43,15 +43,15 @@
 
             <div class="main_container">
 
-                <div class="disc_item" v-for="element in database" v-if="selectedArtist == element.author || selectedArtist == ''">
+                <div class="disc_item" v-for="album in albumsDatabase">
 
-                    <img class="cover" :src="element.poster" alt="">
+                    <img class="cover" :src="album.poster" alt="">
 
-                    <h3 class="title">{{element.title}}</h3>
+                    <h3 class="title">{{album.title}}</h3>
 
-                    <span class="author">{{element.author}}</span>
+                    <span class="author">{{album.author}}</span>
 
-                    <span class="year">{{element.year}}</span>
+                    <span class="year">{{album.year}}</span>
 
                 </div>
 

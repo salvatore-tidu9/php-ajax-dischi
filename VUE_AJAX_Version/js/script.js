@@ -4,38 +4,55 @@ var app = new Vue({
 
     data: {
 
-        database: [],
+        albumsDatabase: [],
 
         authors: [],
 
-        selectedArtist: "",
+        selectedAuthor: "",
     },
 
     mounted() {
 
-        axios
+        this.getAlbums();
 
-        .get("server.php")
-
-        .then((result) => {
-
-            this.database= result.data;
-
-            this.filterAuthors();
-        });
+        this.getAuthors();
     },
 
     methods: {
 
-        filterAuthors() {
+        getAlbums: function() {
 
-            axios
+            axios 
 
-            .get("server.php?listAuthors=true")
+            .get("server.php?call=allAlbums")
 
-            .then((result) => {
+            .then(result => {
+
+                this.albumsDatabase = result.data;
+            });
+        },
+
+        getAuthors: function() {
+
+            axios 
+
+            .get("server.php?call=allAuthors")
+
+            .then(result => {
 
                 this.authors = result.data;
+            });
+        },
+
+        getFilteredAuthors: function() {
+
+            axios 
+
+            .get("server.php?call=filteredAuthors&author=" + this.selectedAuthor)
+
+            .then(result => {
+
+                this.albumsDatabase = result.data;
             });
         }
     }
